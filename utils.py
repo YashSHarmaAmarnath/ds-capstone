@@ -27,8 +27,8 @@ def load_and_clean(file) -> tuple[pd.DataFrame, list[str]]:
     if missing:
         raise ValueError(f"Missing columns: {missing}")
 
-    df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"], infer_datetime_format=True)
-
+    # df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"], infer_datetime_format=True)
+    df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
     before = len(df)
     df = df[df["CustomerID"].notnull()]
     dropped = before - len(df)
